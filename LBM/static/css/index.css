@@ -1,0 +1,72 @@
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+#esquerda{
+    border-right: 1px solid rgb(134, 134, 134);
+    flex-direction: column;
+    align-items: center;
+}
+#logo{
+    width: 190px;
+    height: 140px;
+}
+#saudacao{
+    font-size: 32px;
+    color: rgb(63, 63, 63);
+    width: 100%;
+    padding: 0px 0px 0px 15%;
+}
+
+#nav{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 0px 15%;
+    gap: 10px;
+}
+#nav button img{
+    width: 30px;
+    height: 30px;
+}
+#nav button{
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: none;
+    width: 75%;
+    height: 40px;
+    gap: 9px;
+    font-size: 20px;
+    transition: 0.3s ease;
+    background-color: white;
+}
+#nav button:hover{
+    background-color: rgb(206, 206, 206);
+}
+#nav button:focus{
+    background-color: rgb(206, 206, 206);
+    outline: none;
+}
+
+
+#direita{
+    padding: 50px;
+    width: 75%;
+    height: 100%;
+    
+}
+
+@media (max-width:768px){
+    #direita{
+        width: 100%;
+    }
+}
+

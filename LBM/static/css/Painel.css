@@ -1,0 +1,66 @@
+body{
+    margin: 0px;
+}
+
+main{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+#infos{
+    display: flex;
+    padding-left:10% ;
+    gap: 20%;
+}
+
+#temperatura{
+    text-align: center;
+    font-family: "Arial";
+}
+
+#umidade{
+    text-align: center;
+    font-family: "Arial";
+}
+
+#barraTMP{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid white;
+    background: conic-gradient(#3498db 5deg , white 0deg);
+    transform: rotate(-90deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#barraUMD{
+    color: rgb(0, 217, 255);
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 5px solid white;
+    background: conic-gradient(#3498db 5deg , white 0deg);
+    transform: rotate(-90deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circulo{
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+main{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
