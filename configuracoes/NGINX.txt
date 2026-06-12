@@ -1,0 +1,20 @@
+1- a configuração do nginx faz ele carregar todos os arquivos de:
+   etc/nginx/sites-enabled, assim é só por a configuração lá
+
+2- a pasta com os scripts pode estar em qualquer lugar, mas é conveniente
+   deixar em var/www/html porque o SO não bloqueia leitura nela
+
+3- a configuração adequada é:
+   
+   server{
+	listen 80;
+	server_name lab_m;
+
+	root /var/www/html/LBM;
+	index tmp/index.html;
+    }
+
+COMANDOS:
+iniciar nginx = sudo systemctl start nginx
+reiniciar nginx = sudo systemctl restart nginx
+parar nginx = sudo systemctl stop nginx

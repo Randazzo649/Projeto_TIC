@@ -1,0 +1,9 @@
+1-para assumir IP estático
+
+	1.1- descobrir nome da conexão:
+	     nmcli connection show -> <NAME>
+	
+	1.2- Solicitar IP estático:
+	     sudo nmcli connection modify "<NAME>" \
+	     ipv4.addesses <IP_DESEJADO> \
+             ipv4.gateway 192.168.0.1 \
