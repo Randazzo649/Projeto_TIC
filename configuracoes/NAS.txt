@@ -1,0 +1,23 @@
+1- o arquivo de configuração do NAS fica em /etc/samba e se chama smb.conf
+
+2- para que ele compartilhe a pasta /var/NAS ele precisa ter o conteudo:
+"""	[global]
+		workgroup = WORKGROUP
+		server string = Samba Server
+		security = user
+		map to guest = bad user
+		dns proxy = no
+
+		server min protocol = SMB2
+
+	[NAS]
+		path = Pasta_compartilhada_LAB+
+		browseable = yes
+		writeable = yes
+		guest ok = yes
+		read only = no
+		force user = nobody """
+
+3- deve-se executar sudo systemctl restart smbd 
+(ou sudo systemctl stop smbd; sudo systemctl start smbd)
+
