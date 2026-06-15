@@ -1,6 +1,10 @@
 from pathlib import Path
 import os
 
+os.system("apt install samba")
+os.system("apt install nginx")
+os.system("apt install php-fpm")
+
 #Nginx
 conteudo_nginx = """
 server{
@@ -9,6 +13,16 @@ server{
 
 	root /var/www/html/LBM;
 	index tmp/index.html;
+ 
+    location / {
+        	try_files $uri $uri/ =404;
+    	}
+
+	location ~ \.php$ {
+        	include snippets/fastcgi-php.conf;
+        	fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+    	}
+ 
     }
 
 """

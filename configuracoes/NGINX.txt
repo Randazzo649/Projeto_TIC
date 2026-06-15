@@ -12,6 +12,16 @@
 
 	root /var/www/html/LBM;
 	index tmp/index.html;
+	
+	location / {
+        	try_files $uri $uri/ =404;
+    	}
+
+	location ~ \.php$ {
+        	include snippets/fastcgi-php.conf;
+        	fastcgi_pass unix:/run/php/php8.2-fpm.sock;
+    	}
+
     }
 
 COMANDOS:
