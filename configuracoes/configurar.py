@@ -1,9 +1,13 @@
 from pathlib import Path
 import os
 
-os.system("apt install samba")
-os.system("apt install nginx")
-os.system("apt install php-fpm")
+#resolvi adicionar por padrao a instalacao, se já estiver instalado nada muda
+try:
+    os.system("apt install samba")
+    os.system("apt install nginx")
+    os.system("apt install php-fpm")
+except:
+    print("ERRO: falha ao baixar dependencias samba, nginx e php-fpm")
 
 #Nginx
 conteudo_nginx = """
