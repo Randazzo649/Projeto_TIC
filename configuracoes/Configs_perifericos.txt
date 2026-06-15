@@ -1,0 +1,12 @@
+[Roteador]
+
+	SSID: Laboratorios_instituição
+	Senha painel: Bernardolinersohninsky42
+	Senha Rede: 96252666
+
+
+[Repetidor]
+	
+	SSID: Laboratorios_instituição_EXT
+	Senha Rede: 96252666
+	Senha painel: PC_Prefeita_Camila42

@@ -6,8 +6,8 @@
 #define PORTA_DHT 2
 #define PORTA_LED 4
 #define PERIODO_ENVIO 3000
-#define SSD "VIVOFIBRA-WIFI6-E2C1"
-#define SENHA "Claro que não vou deixar a senha aqui <-------------------------------------"
+#define SSD "Laboratorios_Instituição_EXT"
+#define SENHA "96252666"
 #define SERVIDOR String("http://192.168.15.4/LBM")
 
 DHT dht(PORTA_DHT, DHT11);

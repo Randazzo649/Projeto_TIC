@@ -3,8 +3,11 @@ import os
 
 #resolvi adicionar por padrao a instalacao, se já estiver instalado nada muda
 try:
+    print("verificando/instalando samba")
     os.system("apt install samba")
+    print("verificando/instalando nginx")
     os.system("apt install nginx")
+    print("verificando/instalando php-fpm")
     os.system("apt install php-fpm")
 except:
     print("ERRO: falha ao baixar dependencias samba, nginx e php-fpm")
