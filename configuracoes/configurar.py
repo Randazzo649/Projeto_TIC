@@ -18,7 +18,7 @@ server{
 	server_name lab_m;
 
 	root /var/www/html/LBM;
-	index tmp/index.html;
+	index tmps/index.html;
  
     location / {
         	try_files $uri $uri/ =404;
@@ -41,9 +41,9 @@ else:
     print("ERRO: configuracao do nginx nao encontrada")
 #confere diretorio servido
 diretorio = Path("/var/www/html/LBM")
-arquivo = diretorio / "tmp" / "index.html"
+arquivo = diretorio / "tmps" / "index.html"
 if arquivo.exists():
-    print("arquivo servido encontrado com sucesso em /var/www/html/LBM/tmp/index.html")
+    print("arquivo servido encontrado com sucesso em /var/www/html/LBM/tmps/index.html")
 else:
     print("AVISO: o caminho servido pelo nginx não possui arquivos html ou php")
 
