@@ -8,7 +8,7 @@
 #define PERIODO_ENVIO 3000
 #define SSD "Laboratorios_Instituição_EXT"
 #define SENHA "96252666"
-#define SERVIDOR String("http://192.168.15.4/LBM")
+#define SERVIDOR String("http://192.168.15.100")
 
 DHT dht(PORTA_DHT, DHT11);
 
