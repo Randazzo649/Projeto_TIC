@@ -6,4 +6,4 @@
 	1.2- Solicitar IP estático:
 	     sudo nmcli connection modify "<NAME>" \
 	     ipv4.addesses <IP_DESEJADO> \
-             ipv4.gateway 192.168.0.1 \
+             ipv4.gateway 192.168.1.1 \
