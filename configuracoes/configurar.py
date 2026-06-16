@@ -1,16 +1,15 @@
 from pathlib import Path
 import os
 
-#resolvi adicionar por padrao a instalacao, se já estiver instalado nada muda
-try:
-    print("verificando/instalando samba")
-    os.system("apt install -y samba")
-    print("verificando/instalando nginx")
-    os.system("apt install -y nginx")
-    print("verificando/instalando php-fpm")
-    os.system("apt install -y php-fpm")
-except:
-    print("ERRO: falha ao baixar dependencias samba, nginx e php-fpm")
+#checa se estão instalados
+
+ng = Path("/etc/nginx")
+smb = Path("/etc/samba")
+
+if not ng.exists():
+    print("rode 'sudo apt install -y nginx' antes de executar este script")
+if not smb.exists():
+    print("rode 'sudo apt install -y samba' antes de rodar este script")
 
 #Nginx
 conteudo_nginx = """
@@ -25,7 +24,7 @@ server{
         	try_files $uri $uri/ =404;
     	}
 
-	location ~ \.php$ {
+	location ~ \\.php$ {
         	include snippets/fastcgi-php.conf;
         	fastcgi_pass unix:/run/php/php8.2-fpm.sock;
     	}
@@ -77,12 +76,10 @@ else:
     print("ERRO: falha ao configurar o servidor NAS")
 #cria pasta compartilhada
 caminho_pasta_compartilhada = Path("/var/Pasta_compartilhada_LAB+")
-if caminho_pasta_compartilhada.exists() and caminho_pasta_compartilhada.is_dir():
-    print("pasta compartilhada encontrada")
-else:
+if caminho_pasta_compartilhada.is_dir():
     caminho_pasta_compartilhada.mkdir(parents=True, exist_ok=True)
     caminho_pasta_compartilhada.chmod(0o777)
-    print("pasta compartilhada não encontrada, criada com sucesso")
+    print("pasta compartilhada criada com sucesso")
     arq_test = caminho_pasta_compartilhada / "me_leia.txt"
     arq_test.write_text(conteudo_msg_teste)
     
