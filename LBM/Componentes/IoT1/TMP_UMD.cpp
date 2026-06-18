@@ -6,7 +6,7 @@
 #define PORTA_DHT 2
 #define PORTA_LED 4
 #define PERIODO_ENVIO 3000
-#define SSD "Laboratorios_Instituição_EXT"
+#define SSD "Laboratório_Instituição_EXT"
 #define SENHA "96252666"
 #define SERVIDOR String("http://192.168.1.101")
 

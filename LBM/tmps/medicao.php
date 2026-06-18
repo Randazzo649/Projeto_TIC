@@ -14,15 +14,16 @@
         <link rel="stylesheet" href="../static/css/bootstrap.min.css">
     </head>
     <body>
-        <main>
-            <div id="esquerda" class="w-25 h-100 d-none d-md-flex">
+        <main class="d-flex flex-column flex-md-row">
+            <div id="esquerda" class="d-flex flex-row flex-md-column">
                 <img src="../static/imgs/Capturar.PNG" alt="" id="logo">
-                <p id="saudacao">Ola, ADM</p>
+                <p class="d-none d-md-flex" id="saudacao">Ola, ADM</p>
                 
-                <div id="nav">
-                    <button id="inicio_lnk" > <img src="../static/imgs/home.png"> Inicio </button>
-                    <button id="documentos_lnk"> <img src="../static/imgs/doc.png"> Documentos </button>
-                    <button id="medicoes_lnk"> <img src="../static/imgs/medicoes.png"> Medições </button>
+                <div id="nav" class="d-flex flex-row flex-md-column">
+                    <button id="inicio_lnk" > <img src="../static/imgs/home.png"> <txt class="d-none d-md-flex">Inicio</txt> </button>
+                    <button id="documentos_lnk"> <img src="../static/imgs/doc.png"> <txt class="d-none d-md-flex">Documentos</txt> </button>
+                    <button id="medicoes_lnk"> <img src="../static/imgs/medicoes.png"> <txt class="d-none d-md-flex">Medições</txt> </button>
+                    <button id="suporte_lnk"> <img src="../static/imgs/suporte.png"> <txt class="d-none d-md-flex">Suporte</txt> </button>
                 </div>
             </div>
             <div id="direita">
@@ -53,7 +54,7 @@
         </main>
     </body>
     <script src="../static/js/config.js"></script>
-    <script src="../static/js/index.js"></script>
+    <script src="../static/js/nav.js"></script>
     <script src="../static/js/chart.js"></script>
     <script src="../static/js/medicao.js"></script>
 </html>
