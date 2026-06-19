@@ -1,17 +1,29 @@
 async function carregarInvasoes() {
-    const resposta = await fetch('invasoes.json');
+
+    const resposta = await fetch(MAIN_URL + "scripts/invasoes.php", {
+        method: "POST"
+    });
+
     const invasoes = await resposta.json();
 
-    const tabela = document.getElementById('tabela');
-    tabela.innerHTML = '';
+    const tabela = document.getElementById("tabela");
 
-    horarios.forEach(invasao => {
+    tabela.innerHTML = "";
+
+    invasoes.forEach(invasao => {
+
+        const status = invasao.verificado ? '<span class="verificado">Verificado</span>' : 
+            `<a href="${MAIN_URL}scripts/verificar_alerta.php?id=${invasao.id}">
+                Não verificado
+            </a>`;
+
         tabela.innerHTML += `
             <tr>
-                <td>${invasao}</td>
+                <td>${invasao.data_movimento}</td>
+                <td>${status}</td>
             </tr>
         `;
     });
 }
 
-carregarHorarios();
+carregarInvasoes();
