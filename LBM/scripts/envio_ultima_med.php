@@ -1,6 +1,6 @@
 <?php
 
-    $arquivo = "../dados/".date("Y-m-d").".json";
+    $arquivo = "../dados/med/".date("Y-m-d").".json";
 
     if($_SERVER["REQUEST_METHOD"] == "GET"){
 

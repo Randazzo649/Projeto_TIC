@@ -1,7 +1,7 @@
 const main_div = document.getElementById("direita");
 const ini_lnk = document.getElementById("inicio_lnk");
 const med_lnk = document.getElementById("medicoes_lnk");
-const doc_lnk = document.getElementById("documentos-lnk");
+const seg_lnk = document.getElementById("seguranca_lnk");
 const sup_lnk = document.getElementById("suporte_lnk");
 
 
@@ -15,4 +15,8 @@ ini_lnk.onclick = () => {
 
 sup_lnk.onclick = () => {
     window.location.href = MAIN_URL+"/tmps/suporte.html";
+}
+
+seg_lnk.onclick = () => {
+    window.location.href = MAIN_URL+"/tmps/seguranca.html";
 }

@@ -4,7 +4,7 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // obtem os dados antigos
-        $arquivo = "../dados/" . date("Y-m-d") . ".json";
+        $arquivo = "../dados/med/" . date("Y-m-d") . ".json";
         $dados = [];
         if (file_exists($arquivo)) {
             $conteudo = file_get_contents($arquivo);

@@ -1,5 +1,5 @@
 <?php
-    $diretorio = "../dados/";
+    $diretorio = "../dados/med";
     $arquivos = scandir($diretorio);
     $arquivos = array_diff($arquivos, array(".", "..", date("Y-m-d").".json"));
 ?>
@@ -21,7 +21,7 @@
                 
                 <div id="nav" class="d-flex flex-row flex-md-column">
                     <button id="inicio_lnk" > <img src="../static/imgs/home.png"> <txt class="d-none d-md-flex">Inicio</txt> </button>
-                    <button id="documentos_lnk"> <img src="../static/imgs/doc.png"> <txt class="d-none d-md-flex">Documentos</txt> </button>
+                    <button id="seguranca_lnk"> <img src="../static/imgs/seguranca.png"> <txt class="d-none d-md-flex">Segurança</txt> </button>
                     <button id="medicoes_lnk"> <img src="../static/imgs/medicoes.png"> <txt class="d-none d-md-flex">Medições</txt> </button>
                     <button id="suporte_lnk"> <img src="../static/imgs/suporte.png"> <txt class="d-none d-md-flex">Suporte</txt> </button>
                 </div>
@@ -32,7 +32,7 @@
                 <div id="med_data" class="d-flex">
                     SELECIONE A DATA:
                     <select name="" id="med_data_select">
-                        <option value="0">Hoje</option>
+                        <option value="Hoje">Hoje</option>
                         <?php foreach ($arquivos as $arquivo) {
                             $data = str_replace(".json", "", $arquivo);
                             echo "<option value='".$data."'>".$data."</option>";
