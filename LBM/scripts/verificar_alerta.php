@@ -12,12 +12,7 @@
         }
     }
 
-    file_put_contents(
-        $arquivo,
-        json_encode($invasoes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
-    );
+    file_put_contents($arquivo,json_encode($invasoes));
 
-    echo json_encode([
-        "status"=>"OK"
-    ]);
+    echo json_encode(["status"=>"OK"]);
 ?>

@@ -1,18 +1,8 @@
 <?php
     header('Content-Type: application/json');
     date_default_timezone_set('America/Sao_Paulo');
-    $arquivo = 'invasoes.json';
-    $dados = json_decode(file_get_contents('php://input'), true);
-
-    if (!$dados || !isset($dados['movimento']) || $dados['movimento'] != true) {
-        http_response_code(400);
-        echo json_encode([
-            "status" => "ERRO",
-            "mensagem" => "Dados inválidos."
-        ]);
-        exit;
-    }
-
+    $arquivo = '../dados/seg/invasoes.json';
+    $invasoes = [];
     $horaAtual = date('H:i');
 
     if ($horaAtual >= "08:00" && $horaAtual < "17:00") {
@@ -21,8 +11,6 @@
         ]);
         exit;
     }
-
-    $invasoes = [];
 
     if (file_exists($arquivo)) {
         $invasoes = json_decode(file_get_contents($arquivo), true) ?? [];
@@ -37,20 +25,24 @@
         }
     }
 
-    $novoRegistro = [
-        "id" => count($invasoes) + 1,
-        "data_movimento" => date("d/m/Y H:i:s"),
-        "verificado" => false
-    ];
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $invasoes[] = $novoRegistro;
+        $novoRegistro = [
+            "id" => count($invasoes) + 1,
+            "movimento" => true,
+            "data_movimento" => date("Y-m-d H:i:s"),
+            "verificado" => false
+        ];
 
-    file_put_contents(
-        $arquivo,
-        json_encode($invasoes, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE)
-    );
+        $invasoes[] = $novoRegistro;
 
-    echo json_encode([
-        "status" => "OK"
-    ]);
+        file_put_contents($arquivo, json_encode($invasoes, JSON_PRETTY_PRINT));
+
+        echo json_encode([
+            "status" => "OK"
+        ]);
+        exit;
+    }
+
+    echo json_encode($invasoes);
 ?>

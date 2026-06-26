@@ -7,12 +7,9 @@
 const char *ssid = "Laboratorios_Instituição_EXT";
 const char *senha = "96252666";
 
-const String url = "...";
+const String url = "http://192.168.1.101/scripts/invasoes.php";
 
-void setup() {
-  Serial.begin(115200);
-  pinMode(PIR_PIN, INPUT);
-  pinMode(LED_PIN, OUTPUT);
+void conectar_wifi(){
   WiFi.begin(ssid, senha);
   Serial.print("Conectando-se ao Wi-Fi");
   while (WiFi.status() != WL_CONNECTED) {
@@ -21,22 +18,21 @@ void setup() {
   }
   Serial.println(".");
   Serial.println("\nConectado! IP: " + WiFi.localIP().toString());
-  Serial.println("Calibrando PIR...");
-  delay(60000);
-  Serial.println("Pronto!");
 }
 
-void loop(){
-  bool movimento = digitalRead(PIR_PIN);
-  if (movimento == HIGH) {
-    digitalWrite(LED_PIN, HIGH);
-    verificarHora();
-  } else {
-    digitalWrite(LED_PIN, LOW);
+void reconectar_wifi(){
+  if(WiFi.status() != WL_CONNECTED){
+    Serial.print("\ndesconectado");
+    WiFi.disconnect();
+    delay(500);
+    WiFi.begin(ssid, senha);
+    while(WiFi.status() != WL_CONNECTED)
+      delay(500);
+    Serial.print("\nreconectado");
   }
 }
 
-void mandarAlerta(){
+void mandar_alerta(){
     if(WiFi.status() == WL_CONNECTED){
       HTTPClient http;
       http.begin(url);
@@ -52,4 +48,31 @@ void mandarAlerta(){
       }
       http.end();
     }
+}
+
+void detectar_movimentar(){
+  static bool estadoAnterior = LOW;
+  bool movimento = digitalRead(PIR_PIN);
+  if (movimento == HIGH && estadoAnterior == LOW) {
+    digitalWrite(LED_PIN, HIGH);
+    mandarAlerta();
+  }
+  if (movimento == LOW) 
+    digitalWrite(LED_PIN, LOW);
+  estadoAnterior = movimento;
+}
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(PIR_PIN, INPUT);
+  pinMode(LED_PIN, OUTPUT);
+  conectar_wifi();
+  Serial.println("Calibrando PIR...");
+  delay(60000);
+  Serial.println("Pronto!");
+}
+
+void loop(){
+  detectar_movimento();
+  reconectar_wifi();
 }

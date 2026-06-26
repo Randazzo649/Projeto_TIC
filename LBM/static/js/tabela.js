@@ -1,15 +1,13 @@
 async function carregarInvasoes() {
 
-    const resposta = await fetch(MAIN_URL + "scripts/invasoes.php", {
-        method: "POST"
-    });
+    const resposta = await fetch(MAIN_URL + "scripts/invasoes.php");
     const invasoes = await resposta.json();
     const tabela = document.getElementById("tabela");
     tabela.innerHTML = "";
     invasoes.forEach(invasao => {
         const status = invasao.verificado
             ? '<span class="verificado">Verificado</span>'
-            : `<button onclick="verificarInvasao(${invasao.id})">
+            : `<button class="btn btn-danger" onclick="verificarInvasao(${invasao.id})">
                     Verificar
                </button>`;
         tabela.innerHTML += `
