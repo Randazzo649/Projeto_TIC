@@ -3,20 +3,15 @@ async function carregarInvasoes() {
     const resposta = await fetch(MAIN_URL + "scripts/invasoes.php", {
         method: "POST"
     });
-
     const invasoes = await resposta.json();
-
     const tabela = document.getElementById("tabela");
-
     tabela.innerHTML = "";
-
     invasoes.forEach(invasao => {
-
-        const status = invasao.verificado ? '<span class="verificado">Verificado</span>' : 
-            `<a href="${MAIN_URL}scripts/verificar_alerta.php?id=${invasao.id}">
-                Não verificado
-            </a>`;
-
+        const status = invasao.verificado
+            ? '<span class="verificado">Verificado</span>'
+            : `<button onclick="verificarInvasao(${invasao.id})">
+                    Verificar
+               </button>`;
         tabela.innerHTML += `
             <tr>
                 <td>${invasao.data_movimento}</td>
@@ -24,6 +19,19 @@ async function carregarInvasoes() {
             </tr>
         `;
     });
+}
+
+async function verificarInvasao(id){
+    await fetch(MAIN_URL + "scripts/verificar_alerta.php",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            id:id
+        })
+    });
+    carregarInvasoes();
 }
 
 carregarInvasoes();
